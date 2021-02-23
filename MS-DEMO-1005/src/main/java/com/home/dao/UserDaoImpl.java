@@ -25,12 +25,14 @@ public class UserDaoImpl implements UserDao {
 		newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
 		newUser.setEmail(user.getEmail());
 		newUser.setSalary(user.getSalary());
+		newUser.setAge(user.getAge());
+		newUser.setServiceType(user.getServiceType());
 		return userRepository.save(newUser);
 	}
 
 	@Override
 	public List<UserEntity> getUsers() {
-		
+
 		return userRepository.findAll();
 	}
 }

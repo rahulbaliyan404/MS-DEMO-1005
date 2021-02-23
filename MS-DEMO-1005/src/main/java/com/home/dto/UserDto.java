@@ -5,6 +5,29 @@ public class UserDto {
 	private String password;
 	private String email;
 	private double salary;
+	private int age;
+	private String serviceType;
+	
+	public UserDto()
+	{
+		
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getServiceType() {
+		return serviceType;
+	}
+
+	public void setServiceType(String serviceType) {
+		this.serviceType = serviceType;
+	}
 
 	public String getEmail() {
 		return email;

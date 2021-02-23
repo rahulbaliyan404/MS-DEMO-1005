@@ -1,5 +1,7 @@
 package com.home.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
-public class UserEntity {
+@Table(name = "mysql_1005_user")
+public class UserEntity implements Serializable {
+
+	private static final long serialVersionUID = 1747395488189741712L;
 	@Id
 	@Column(name = "Id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +24,38 @@ public class UserEntity {
 	private String password;
 	@Column(name = "Email")
 	private String email;
+	@Column(name = "Age")
+	private int age;
 	@Column(name = "Salary")
 	private double salary;
+	@Column(name="Type")
+	private String serviceType;
+	
+	public UserEntity()
+	{
+		
+	}
+
+	public String getServiceType() {
+		return serviceType;
+	}
+
+
+	public void setServiceType(String serviceType) {
+		this.serviceType = serviceType;
+	}
+
 
 	public long getId() {
 		return id;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	public void setId(long id) {
