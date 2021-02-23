@@ -1,23 +1,22 @@
 package com.home.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import com.home.dao.UserDao;
+import java.util.List;
 
-@CrossOrigin(value = "http://localhost:3000")
-@RestController
-public class UserController {
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.home.dto.UserDto;
+import com.home.entity.UserEntity;
+
+@RequestMapping(value = "/demo1005")
+public interface UserController {
 	
-	@Autowired
-	UserDao userDao;
+	@GetMapping(value = "/users")
+	public List<UserEntity> getUsers();
 	
-    @RequestMapping(value = "/greeting", method = RequestMethod.GET)
-    public String getEmployees() {
-        return "Welcome!";
-    }
-    
-	
+	@PostMapping(value = "/save")
+	public ResponseEntity<?> saveUser(@RequestBody UserDto user);
 }

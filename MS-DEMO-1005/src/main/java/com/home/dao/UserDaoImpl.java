@@ -1,5 +1,7 @@
 package com.home.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -8,13 +10,13 @@ import com.home.entity.UserEntity;
 import com.home.repository.UserRepository;
 
 @Repository
-public class UserDaoImpl implements UserDao{
-	
+public class UserDaoImpl implements UserDao {
+
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
-	
+
 	@Autowired
-	private UserRepository userDao;
+	private UserRepository userRepository;
 
 	@Override
 	public UserEntity saveUser(UserDto user) {
@@ -23,6 +25,12 @@ public class UserDaoImpl implements UserDao{
 		newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
 		newUser.setEmail(user.getEmail());
 		newUser.setSalary(user.getSalary());
-		return userDao.save(newUser);
+		return userRepository.save(newUser);
+	}
+
+	@Override
+	public List<UserEntity> getUsers() {
+		
+		return userRepository.findAll();
 	}
 }
