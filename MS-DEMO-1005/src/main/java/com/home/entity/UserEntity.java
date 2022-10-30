@@ -28,23 +28,20 @@ public class UserEntity implements Serializable {
 	private int age;
 	@Column(name = "Salary")
 	private double salary;
-	@Column(name="Type")
+	@Column(name = "Type")
 	private String serviceType;
-	
-	public UserEntity()
-	{
-		
+
+	public UserEntity() {
+
 	}
 
 	public String getServiceType() {
 		return serviceType;
 	}
 
-
 	public void setServiceType(String serviceType) {
 		this.serviceType = serviceType;
 	}
-
 
 	public long getId() {
 		return id;
